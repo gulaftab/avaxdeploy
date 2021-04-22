@@ -1,0 +1,20 @@
+---
+- name: Create Installs directory
+  win_file:
+    path: C:\Installs
+    state: directory
+
+- name: Get info for a single service
+  ansible.windows.win_service_info:
+  name: WinRM
+  register: service_info
+
+
+- name: Copy src to Installs directory
+  ansible.windows.win_copy:
+      src: ../../../src
+      dest: C:\Installs
+      remote_src: False
+
+
+

@@ -1,0 +1,28 @@
+all:
+  hosts:
+    avatarpro:
+      ## Required settings
+      #-------------------
+      # IPv4 host address
+      #hosts: 
+      #      192.168.0.149
+      #      192.168.0.145
+      #      192.168.0.145
+      #      192.168.0.176
+      #ansible_host: 192.168.0.149
+#     ansible_host: 192.168.0.176
+#ansible_host: 192.168.0.162
+#176
+
+      # IPv4 host address
+      ansible_port: 5985
+      # IPv4 host address
+      ansible_user: empaxco
+      ansible_password: empax123
+      
+      #for communicating with windows machines
+      ansible_connection: winrm
+      ansible_winrm_transport: ntlm
+      #ansible_winrm_transport: basic
+      ansible_winrm_server_cert_validation: ignore
+
