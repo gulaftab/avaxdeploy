@@ -1,0 +1,16 @@
+---
+
+# Ansible working directory on remote host
+working_dir: ""
+
+# IPv4 host address
+ansible_port: 
+# IPv4 host address
+ansible_user: Empaxco
+ansible_password: empax123
+
+#for communicating with windows machines
+ansible_connection: winrm
+ansible_winrm_transport: ntlm
+#ansible_winrm_transport: basic
+ansible_winrm_server_cert_validation: ignore
