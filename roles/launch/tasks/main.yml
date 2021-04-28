@@ -1,0 +1,18 @@
+---
+- name: Check if run script exists on remote machine 
+  win_stat:
+   path: C:\bot\run.bat
+  register: run_batch_script
+
+
+# - name: run the batch Script on remote machines
+#   win_shell: C:\bot\run.bat
+#   when: run_batch_script.stat.exists  
+
+- name: create a new service with extra details
+  win_service:
+    name: avt_pro_service
+    path: C:\bot\run.bat
+    display_name: avt_pro_service
+    description: AVT Pro service description
+    register: service_created

@@ -1,0 +1,26 @@
+---
+- name: Create remote installation Directory if it does not exists
+  win_file:
+   path: '{{BOT_DIR}}'
+   state: directory 
+
+- name: Sync the contents of source directories to remote directories
+  win_copy:
+   src: data/Empaxco/
+   dest: '{{BOT_DIR}}'
+   purge: no # if you want to remove all the files/directories on the remote machine which are not in the source then change this to yes
+   remote_src: false
+
+- name: Copy src to Installs directory
+  win_copy:
+   src: ./data/Empaxco
+   dest: '{{BOT_DIR}}'
+   remote_src: False
+   register: copy_completed
+   until: src_folder copy succeeded
+
+- name: Copy run script to remote machines
+  win_copy:
+   src: ./data/run.bat
+   dest: C:\bot\
+   remote_src: no

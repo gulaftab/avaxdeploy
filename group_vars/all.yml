@@ -1,13 +1,16 @@
 ---
 
+ANACONDA_INSTALL_DIR: C:\Tools\Anaconda3
+BOT_DIR:  C:\bot\avt_pro
+
 # Ansible working directory on remote host
 working_dir: ""
 
 # IPv4 host address
 ansible_port: 
 # IPv4 host address
-ansible_user: Empaxco
-ansible_password: empax123
+ansible_user: gulaftab
+ansible_password: 0)AKkm+y/SS+UO|
 
 #for communicating with windows machines
 ansible_connection: winrm

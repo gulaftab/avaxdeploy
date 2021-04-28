@@ -1,20 +1,62 @@
 ---
-- name: Create Installs directory
-  win_file:
-    path: C:\Installs
-    state: directory
+- name: Install Chocolatey package manager for Windows
+  win_chocolatey:
+    name:
+    - chocolatey
+    - chocolatey-core.extension
+    state: present
 
-- name: Get info for a single service
-  ansible.windows.win_service_info:
-  name: WinRM
-  register: service_info
+- name: Ensure chocolatey path is registered
+  win_path:
+    name: PATH
+    elements: C:\ProgramData\chocolatey\bin
+    scope: machine
+    state: present
 
+- name: Install git using chocolatey
+  win_chocolatey:
+    name: git
+    state: present
 
-- name: Copy src to Installs directory
-  ansible.windows.win_copy:
-      src: ../../../src
-      dest: C:\Installs
-      remote_src: False
+- name: Attempt to use git to test if it is installed
+  win_shell: pwsh -Command 'git --version'
+  ignore_errors: true
 
+- name: display path after git install
+  win_shell:  Write-Output $env:PATH
+  register: path_after_git
+  
+- name: Install Anacaonda using chocolatey
+  win_chocolatey:
+    name: anaconda3
+    state: present
 
+- name: Ensure that Conda is added to PATH 
+  win_path:
+    elements: 
+      - '{{ANACONDA_INSTALL_DIR}}\'
+      - '{{ANACONDA_INSTALL_DIR}}\Scripts\'
+      - '{{ANACONDA_INSTALL_DIR}}\Library\bin'
+    scope: user
+    state: present
 
+- name: Initialize conda for powershell and cmd
+  win_command: conda init {{ item }}
+  args:
+    chdir: '{{ANACONDA_INSTALL_DIR}}\Scripts\'
+  with_items:
+    - powershell 
+    - cmd.exe
+  register: conda_cmd_powershell
+
+- name: install pip packages
+  win_command: '{{ANACONDA_INSTALL_DIR}}\Scripts\pip install --upgrade --user {{ item }}'
+  with_items:
+  - vosk
+  - soundfile
+  - sounddevice
+  - selenium
+  - pipwin
+  - pyaudio
+  - nltk
+  # become: "{{ anaconda_sudo }}"
