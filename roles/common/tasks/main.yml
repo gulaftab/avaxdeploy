@@ -18,9 +18,21 @@
     name: git
     state: present
 
-- name: Attempt to use git to test if it is installed
-  win_shell: pwsh -Command 'git --version'
-  ignore_errors: true
+- name: Install chrome using chocolatey
+  win_chocolatey:
+    name: googlechrome
+    state: present
+
+# - name: Install NSSM (The Non-Sucking Service Manager, )
+#   win_chocolatey:
+#     name: nssm
+#     state: present
+#   when: >
+#   ansible_os_family == 'Windows'
+
+# - name: Attempt to use git to test if it is installed
+#   win_shell: pwsh -Command 'git --version'
+#   ignore_errors: true
 
 - name: display path after git install
   win_shell:  Write-Output $env:PATH
@@ -57,6 +69,11 @@
   - sounddevice
   - selenium
   - pipwin
-  - pyaudio
   - nltk
+  # become: "{{ anaconda_sudo }}"
+
+- name: install using conda packages
+  win_command: 'conda install {{ item }}'
+  with_items:
+  - pyaudio
   # become: "{{ anaconda_sudo }}"

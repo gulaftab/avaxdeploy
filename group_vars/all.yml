@@ -9,8 +9,8 @@ working_dir: ""
 # IPv4 host address
 ansible_port: 
 # IPv4 host address
-ansible_user: gulaftab
-ansible_password: 0)AKkm+y/SS+UO|
+ansible_user: Empaxco
+ansible_password: empax123
 
 #for communicating with windows machines
 ansible_connection: winrm

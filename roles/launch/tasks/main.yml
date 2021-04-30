@@ -4,15 +4,32 @@
    path: C:\bot\run.bat
   register: run_batch_script
 
+- name: Get whoami information
+  win_whoami:
+
+
+# - name: Add run script to windows startup (for Autostart)
+#   win_copy: 
+#     src: C:\bot\run.bat
+#     dest: C:\Users\Tech Zone\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\run.bat
+#     remote_src: yes
+
 
 # - name: run the batch Script on remote machines
 #   win_shell: C:\bot\run.bat
 #   when: run_batch_script.stat.exists  
 
-- name: create a new service with extra details
-  win_service:
-    name: avt_pro_service
-    path: C:\bot\run.bat
-    display_name: avt_pro_service
-    description: AVT Pro service description
-    register: service_created
+# - name: create a new service with extra details
+#   win_service:
+#     name: avt_pro_service
+#     path: C:\bot\run.bat
+#     display_name: avt_pro_service
+#     description: AVT Pro service description
+#     register: service_created
+
+- name: Install & start application as Windows service (via nssm)
+  win_nssm:
+    name: "AVT_PRO"
+    application: C:\bot\act.bat
+    state: started
+  register: service_created_status

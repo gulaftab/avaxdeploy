@@ -1,16 +1,16 @@
 all:
   hosts:
     Windows_A:
-      ansible_host: 35.223.239.185
+      ansible_host: 192.168.0.105
     vars:
       ansible_port: 
-      ansible_user: gulaftab
-      ansible_password: 0)AKkm+y/SS+UO|
+      ansible_user: Empaxco
+      ansible_password: empax123
 
-    Windows_B:
-      ansible_host: 35.223.239.185
-    vars:
-      ansible_port: 
-      ansible_user: gulaftab
-      ansible_password: 0)AKkm+y/SS+UO|
+#    Windows_B:
+#      ansible_host: 35.223.239.185
+#    vars:
+#      ansible_port: 
+#      ansible_user: gulaftab
+#      ansible_password: 0)AKkm+y/SS+UO|
       
