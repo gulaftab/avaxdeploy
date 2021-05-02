@@ -1,16 +1,22 @@
 ---
 
-ANACONDA_INSTALL_DIR: C:\Tools\Anaconda3
-BOT_DIR:  C:\bot\avt_pro
+ANACONDA_INSTALL_DIR: C:\Tools\Anaconda3 
+BOT_INSTALL_DIR:  C:\bot\avt_pro
+LOCAL_DATA_DIR: ../../data #relative to roles
 
-# Ansible working directory on remote host
+WIN_STARTUP_PATH: '{{ansible_user_dir}}\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\'
+
+
+
+# 
 working_dir: ""
 
 # IPv4 host address
 ansible_port: 
-# IPv4 host address
-ansible_user: Empaxco
-ansible_password: empax123
+# IPv4 host address 
+
+# ansible_user: Empaxco #Set them in hosts file
+# ansible_password: empax123
 
 #for communicating with windows machines
 ansible_connection: winrm
