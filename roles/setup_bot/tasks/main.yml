@@ -4,13 +4,6 @@
    path: '{{BOT_INSTALL_DIR}}'
    state: directory 
 
-# - name: Sync the contents of source directories to remote directories
-#   win_copy:
-#    src: data/Empaxco/
-#    dest: '{{BOT_INSTALL_DIR}}'
-#    purge: no # if you want to remove all the files/directories on the remote machine which are not in the source then change this to yes
-#    remote_src: false
-
 - name: Copy src to Installs directory
   win_copy:
    src: '{{LOCAL_DATA_DIR}}/Empaxco/'

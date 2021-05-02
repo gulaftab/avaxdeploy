@@ -4,9 +4,6 @@
    path: C:\bot\run.bat
   register: run_batch_script
 
-# - name: Get whoami information
-#   win_whoami:
-
 
 - name: Add run script to windows startup (for Autostart)
   win_copy: 
@@ -27,18 +24,3 @@
 - debug:
     var: script_res
 
-
-# - name: create a new service with extra details
-#   win_service:
-#     name: avt_pro_service
-#     path: C:\bot\run.bat
-#     display_name: avt_pro_service
-#     description: AVT Pro service description
-#     register: service_created
-
-# - name: Install & start application as Windows service (via nssm)
-#   win_nssm:
-#     name: "AVT_PRO"
-#     application: C:\bot\act.bat
-#     state: started
-#   register: service_created_status
