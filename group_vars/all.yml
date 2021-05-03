@@ -2,7 +2,7 @@
 
 ANACONDA_INSTALL_DIR: C:\Tools\Anaconda3 
 BOT_INSTALL_DIR:  C:\bot\avt_pro
-LOCAL_DATA_DIR: ../../data #relative to roles
+LOCAL_DATA_DIR: ../../BOTCODE #relative to roles
 
 WIN_STARTUP_PATH: '{{ansible_user_dir}}\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\'
 

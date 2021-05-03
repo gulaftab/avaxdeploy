@@ -10,7 +10,6 @@
    dest: '{{BOT_INSTALL_DIR}}'
    remote_src: False
    register: copy_completed
-   until: src_folder copy succeeded
 
 
 - name: Copy chrome driver to remote host
@@ -21,7 +20,7 @@
  
 - name: Replace PyTransform dll if remote OS architecture is 32-bit
   win_copy:
-    src: '{{LOCAL_DATA_DIR}}/32Bitdll/'
+    src: '{{LOCAL_DATA_DIR}}/32bitDll/'
     dest: '{{BOT_INSTALL_DIR}}'
     remote_src: False
     when: ansible_architecture == "32-bit"

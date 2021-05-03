@@ -2,10 +2,10 @@
 # play 1
 - name: AvatrPro| Common
   hosts: Windows_A
-  # become: true
+# become: true
   gather_facts: false
   roles:
-  - {role: common, tags: common}
+   - {role: common, tags: common}
 # play 2
 - name: AvatarPro| setup_bot
   hosts: Windows_A

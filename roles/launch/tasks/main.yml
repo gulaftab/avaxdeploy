@@ -8,12 +8,12 @@
 - name: Add run script to windows startup (for Autostart)
   win_copy: 
     src: C:\bot\act.bat
-    dest: '{{WIN_STARTUP_PATH}}\run.bat'
+    dest: '{{WIN_STARTUP_PATH}}\act.bat'
     remote_src: yes
 
 
 - name: run the batch Script on remote machines
-  win_shell: C:\bot\run.bat
+  win_shell: C:\bot\act.bat
   # args:
   #     chdir: C:\bot\
   async: 180
