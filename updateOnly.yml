@@ -1,0 +1,31 @@
+---
+
+# play 
+- name: AvatarPro| Update Bot Code Only
+  hosts: Windows_A
+  gather_facts: true
+  
+  tasks:
+   - name: Copy BOT src to Remote  directory
+     win_copy:
+       src: './BOTCODE/Empaxco/'
+       dest: '{{BOT_INSTALL_DIR}}'
+       remote_src: False
+     register: copy_completed
+
+   - name: Replace PyTransform dll if remote OS architecture is 32-bit
+     win_copy:
+      src: './BOTCODE/32bitDll/_pytransform.dll'
+      dest: '{{BOT_INSTALL_DIR}}\pytransform\_pytransform.dll'
+      remote_src: False
+      force: yes
+     when: ansible_architecture == "32-bit"
+     register: dll_replaced
+
+
+   - debug:
+       var: dll_replaced
+
+
+
+

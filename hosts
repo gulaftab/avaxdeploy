@@ -1,6 +1,9 @@
 [Windows_A]
-  192.168.0.149
+  192.168.0.101
+  192.168.0.134
+
 
 [Windows_A:vars]
-ansible_user=empaxco
+ansible_user=Empaxco
 ansible_password=empax123
+

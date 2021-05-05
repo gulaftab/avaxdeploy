@@ -1,0 +1,9 @@
+---
+
+# play 
+- name: AvatarPro| setup_bot
+  hosts: Windows_A
+  gather_facts: false
+  roles: 
+  - {role: setup_bot, tags: setup_bot}
+

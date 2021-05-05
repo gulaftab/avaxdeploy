@@ -4,24 +4,39 @@
    path: '{{BOT_INSTALL_DIR}}'
    state: directory 
 
-- name: Copy src to Installs directory
+- name: Copy BOT src to Remote  directory
   win_copy:
    src: '{{LOCAL_DATA_DIR}}/Empaxco/'
    dest: '{{BOT_INSTALL_DIR}}'
    remote_src: False
    register: copy_completed
 
+- name: Copy S_call to to Remote  directory
+  win_copy:
+   src: '{{LOCAL_DATA_DIR}}/s_call_working'
+   dest: C:\bot
+   remote_src: False
+   register: S_call_copy_completed
+   
+- name: Copy VB-Cable to to Remote  directory
+  win_copy:
+   src: '{{LOCAL_DATA_DIR}}/VBcables'
+   dest: C:\bot
+   remote_src: False
+   register: vb-cable_copy_completed
+
+  
 
 - name: Copy chrome driver to remote host
   win_copy:
    src: '{{LOCAL_DATA_DIR}}/driver'
-   dest: '{{BOT_INSTALL_DIR}}'
+   dest: C:\bot
    remote_src: False
  
 - name: Replace PyTransform dll if remote OS architecture is 32-bit
   win_copy:
-    src: '{{LOCAL_DATA_DIR}}/32bitDll/'
-    dest: '{{BOT_INSTALL_DIR}}'
+    src: '{{LOCAL_DATA_DIR}}/32bitDll/_pytransform.dll'
+    dest: '{{BOT_INSTALL_DIR}}\pytransform\_pytransform.dll'
     remote_src: False
     when: ansible_architecture == "32-bit"
     register: dll_replaced
@@ -39,3 +54,18 @@
    src: '{{LOCAL_DATA_DIR}}/act.bat'
    dest: C:\bot\
    remote_src: no
+   
+   
+   
+- name: Copy git clone script to remote machines
+  win_copy:
+   src: '{{LOCAL_DATA_DIR}}/install_avatar_2.bat'
+   dest: C:\bot\install_avatar_2.bat
+   remote_src: False
+
+- name: Copy git update script to remote machines
+  win_copy:
+   src: '{{LOCAL_DATA_DIR}}/update.bat'
+   dest: C:\bot\
+   remote_src: False
+

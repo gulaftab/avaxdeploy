@@ -12,15 +12,15 @@
     remote_src: yes
 
 
-- name: run the batch Script on remote machines
-  win_shell: C:\bot\act.bat
-  # args:
-  #     chdir: C:\bot\
-  async: 180
-  poll: 0
-  when: run_batch_script.stat.exists
-  register: script_res
-
-- debug:
-    var: script_res
+#- name: run the batch Script on remote machines
+#  win_shell: C:\bot\act.bat
+#  # args:
+#  #     chdir: C:\bot\
+#  async: 180
+#  poll: 0
+#  when: run_batch_script.stat.exists
+#  register: script_res
+#
+#- debug:
+#    var: script_res
 

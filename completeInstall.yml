@@ -1,0 +1,22 @@
+---
+# play 1
+- name: AvatrPro| Common
+  hosts: Windows_A
+# become: true
+  gather_facts: false
+  roles:
+   - {role: common, tags: common}
+# play 2
+- name: AvatarPro| setup_bot
+  hosts: Windows_A
+  gather_facts: false
+  roles: 
+  - {role: setup_bot, tags: setup_bot}
+
+# # play 3
+- name: AvatarPro| Launch
+  hosts: 
+    - Windows_A
+  gather_facts: true #this must be set to true as we use facts in this role
+  roles: 
+  - {role: launch, tags: Launch}
